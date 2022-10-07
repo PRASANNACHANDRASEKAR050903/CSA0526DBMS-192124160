@@ -1,0 +1,115 @@
+Enter password: **********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 6
+Server version: 5.5.62 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use ssc;
+Database changed
+mysql> create table movies(Sno int(3),Moviename varchar(30),Type varchar(15));
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into movies values(1,"Aayirathil oruvan","History");
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  insert into movies values(2,"Ratchasan","Crime thriller");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into movies values(3,"Bachelor","Romantic");
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  insert into movies values(4,"A1","Comedy");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from movies;
++------+-------------------+----------------+
+| Sno  | Moviename         | Type           |
++------+-------------------+----------------+
+|    1 | Aayirathil oruvan | History        |
+|    2 | Ratchasan         | Crime thriller |
+|    3 | Bachelor          | Romantic       |
+|    4 | A1                | Comedy         |
++------+-------------------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> > start transaction;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '> start transaction' at line 1
+mysql> start transaction;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> savepoint ini;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql>  insert into movies values(5,"BIGIL","Commercial");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from movies;
++------+-------------------+----------------+
+| Sno  | Moviename         | Type           |
++------+-------------------+----------------+
+|    1 | Aayirathil oruvan | History        |
+|    2 | Ratchasan         | Crime thriller |
+|    3 | Bachelor          | Romantic       |
+|    4 | A1                | Comedy         |
+|    5 | BIGIL             | Commercial     |
++------+-------------------+----------------+
+5 rows in set (0.00 sec)
+
+mysql>  savepoint ins;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> update movies set Moviename="MASTER" where Sno=5;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from movies;
++------+-------------------+----------------+
+| Sno  | Moviename         | Type           |
++------+-------------------+----------------+
+|    1 | Aayirathil oruvan | History        |
+|    2 | Ratchasan         | Crime thriller |
+|    3 | Bachelor          | Romantic       |
+|    4 | A1                | Comedy         |
+|    5 | MASTER            | Commercial     |
++------+-------------------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> savepoint upd;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql>  delete from movies where Sno=5;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from movies;
++------+-------------------+----------------+
+| Sno  | Moviename         | Type           |
++------+-------------------+----------------+
+|    1 | Aayirathil oruvan | History        |
+|    2 | Ratchasan         | Crime thriller |
+|    3 | Bachelor          | Romantic       |
+|    4 | A1                | Comedy         |
++------+-------------------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> rollback to ini;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql>  select *from movies;
++------+-------------------+----------------+
+| Sno  | Moviename         | Type           |
++------+-------------------+----------------+
+|    1 | Aayirathil oruvan | History        |
+|    2 | Ratchasan         | Crime thriller |
+|    3 | Bachelor          | Romantic       |
+|    4 | A1                | Comedy         |
++------+-------------------+----------------+
+4 rows in set (0.00 sec)
+
+mysql>
