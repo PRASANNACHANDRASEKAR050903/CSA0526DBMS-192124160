@@ -22,4 +22,6 @@
 #experiment 11
 [sql quries](https://github.com/PRASANNACHANDRASEKAR050903/CSA0526DBMS-192124160/blob/main/EXPERIMENT%20NO%2011.txt)
 #experiment 12
+[sql quries](https://github.com/PRASANNACHANDRASEKAR050903/CSA0526DBMS-192124160/blob/main/EXPERIMENT%20NO%2012.txt)
+#experiment 13
 [sql quries](
